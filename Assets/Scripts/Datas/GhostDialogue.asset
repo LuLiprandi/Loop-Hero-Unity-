@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: GhostDialogue
   m_EditorClassIdentifier: 
   rows:
-  - charactereName: 
-    longDialogueText: 
-    nextRowNumber: {fileID: 0}
+  - rowNumber: 0
+    charactereName: Ghost
+    longDialogueText: "Salut, comment \xE7a va?"
+    nextRowNumber: 1
+  - rowNumber: 1
+    charactereName: Ava
+    longDialogueText: Salut je suis perdue
+    nextRowNumber: 2
+  - rowNumber: 2
+    charactereName: Ghost
+    longDialogueText: Oh dommage je vais te manger du coup
+    nextRowNumber: -1
