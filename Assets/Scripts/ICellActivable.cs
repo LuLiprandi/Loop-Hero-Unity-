@@ -1,6 +1,10 @@
 using UnityEngine;
 
 public interface ICellActivable
-{
-    public void Activate(Pawn Currentpawn);
+{  
+    public void Activate(Pawn Currentpawn)
+    {
+
+    }
+    
 }
