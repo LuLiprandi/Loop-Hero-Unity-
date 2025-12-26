@@ -3,6 +3,9 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     [SerializeField] private Cell[] _cells;
+    [SerializeField] private int _loopStartIndex = 9;
+
+    public int CellCount => _cells.Length;
 
 
     public Cell GetCellByNumber(int number)
@@ -13,7 +16,17 @@ public class Board : MonoBehaviour
 
     public int GetNextCellToMove(int cellNumber)
     {
-        return cellNumber % _cells.Length;
+        // Avant la boucle : linéaire
+        if (cellNumber < _loopStartIndex)
+        {
+            //bloque la fin du tableau 
+            return Mathf.Min(cellNumber, _cells.Length - 1);
+        }
+        // Dans la boucle : modulo
+        int loopLength = _cells.Length - _loopStartIndex;
+        int loopIndex = (cellNumber - _loopStartIndex) % loopLength;
+
+        return _loopStartIndex + loopIndex;
     }
 
 }
