@@ -56,6 +56,28 @@ public class Pawn : MonoBehaviour
      cell.Activate(this);
     }
     
+    public void IncreaseFear(int value)
+    {
+        _playerDatas._fear += value;
+        _playerDatas._fear = Mathf.Clamp(_playerDatas._fear, 0, 100);
+    }
+
+    public void ReduceFear(int value)
+    {
+        _playerDatas._fear -= value;
+        _playerDatas._fear = Mathf.Clamp(_playerDatas._fear, 0, 100);
+    }
+
+    public void GoBackward(int value)
+        {
+        int targetCell = _playerDatas._cellNumber - value;
+
+        if (targetCell < _board.LoopStartIndex)
+            return; 
+        _playerDatas._cellNumber = _boardGetNextCellToMove(targetCell);
+        MoveToCell();
+
+    }
 
 }
 

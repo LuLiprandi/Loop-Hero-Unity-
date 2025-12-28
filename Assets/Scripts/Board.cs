@@ -29,4 +29,5 @@ public class Board : MonoBehaviour
         return _loopStartIndex + loopIndex;
     }
 
+    public int LoopStartIndex => _loopStartIndex;
 }
