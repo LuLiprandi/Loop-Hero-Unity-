@@ -30,4 +30,7 @@ public class Board : MonoBehaviour
     }
 
     public int LoopStartIndex => _loopStartIndex;
+
+
+
 }

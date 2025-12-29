@@ -73,12 +73,17 @@ public class Pawn : MonoBehaviour
         int targetCell = _playerDatas._cellNumber - value;
 
         if (targetCell < _board.LoopStartIndex)
-            return; 
-        _playerDatas._cellNumber = _boardGetNextCellToMove(targetCell);
+            return;
+        _playerDatas._cellNumber = _board.GetNextCellToMove(targetCell);
         MoveToCell();
 
     }
-
+    public void GoForward(int value)
+    {
+        int targetCell = _playerDatas._cellNumber + value;
+        _playerDatas._cellNumber = _board.GetNextCellToMove(targetCell);
+        MoveToCell();
+    }
 }
 
 
