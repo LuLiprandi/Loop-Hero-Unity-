@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57068bf627ccf8489974b3146ae6144, type: 3}
+  m_Name: SqueletteDialogue 1
+  m_EditorClassIdentifier: 
+  rows:
+  - rowNumber: 0
+    charactereName: Squelette
+    longDialogueText: "Clac\u2026 clac\u2026 Tu n\u2019as rien \xE0 faire ici, petite."
+    nextRowNumber: 1
+  - rowNumber: 1
+    charactereName: Ava
+    longDialogueText: "Je\u2026 je cherche de l\u2019aide. Je ne veux pas d\u2019ennuis...
+      je cherche mon chemin. "
+    nextRowNumber: 2
+  - rowNumber: 2
+    charactereName: Ava
+    longDialogueText: "S\u2019il te pla\xEEt\u2026 tu sais comment aller a ce manoir
+      ?"
+    nextRowNumber: 3
+  - rowNumber: 3
+    charactereName: Squelette
+    longDialogueText: "Oui. C'est tout droit mais attention... la for\xEAt n'aiment
+      pas les peureux. "
+    nextRowNumber: -1
+  - rowNumber: 4
+    charactereName: Squelette
+    longDialogueText: "Tu n'es pas tr\xE8s courageuse...."
+    nextRowNumber: 5
+  - rowNumber: 5
+    charactereName: Squelette
+    longDialogueText: "\u2026Tant pis. Continue seule."
+    nextRowNumber: -1

@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class UIDialogueController : MonoBehaviour
@@ -8,70 +8,91 @@ public class UIDialogueController : MonoBehaviour
     [SerializeField] private TMP_Text _characterNameText;
     [SerializeField] private TMP_Text _dialogueText;
 
-    [Header("Buttons (GameObjects)")]
+    [Header("Buttons GameObjects")]
     [SerializeField] private GameObject _nextButton;
-    [SerializeField] private GameObject _choiceMinusButton; // -5 peur
-    [SerializeField] private GameObject _choicePlusButton;  // +5 peur
+    [SerializeField] private GameObject _choiceMinusButton;
+    [SerializeField] private GameObject _choicePlusButton;
 
-    private DialogueComponent _dialogueComponent;
+    [Header("Choice Button Texts (TMP)")]
+    [SerializeField] private TMP_Text _choiceMinusText;
+    [SerializeField] private TMP_Text _choicePlusText;
+
+    private DialogueComponent _currentDialogue;
+    private bool _dialogueOpen;
     private bool _choiceDone;
 
-    public void StartDialogue(DialogueComponent dialogueComponent)
+    public void StartDialogue(DialogueComponent dialogue)
     {
-        _dialogueComponent = dialogueComponent;
+        if (_dialogueOpen) return;
+
+        _dialogueOpen = true;
         _choiceDone = false;
+        _currentDialogue = dialogue;
+
         _dialoguePanel.SetActive(true);
+
         _choiceMinusButton.SetActive(true);
         _choicePlusButton.SetActive(true);
         _nextButton.SetActive(false);
 
-        UpdateText();
-    }
-
-    public void ChooseMinus5()
-    {
-        if (_choiceDone) return;
-        _choiceDone = true;
-        _dialogueComponent.ApplyFearChoice(-5);
-        _choiceMinusButton.SetActive(false);
-        _choicePlusButton.SetActive(false);
-        _nextButton.SetActive(true);
-    }
-
-    public void ChoosePlus5()
-    {
-        if (_choiceDone) return;
-        _choiceDone = true;
-        _dialogueComponent.ApplyFearChoice(+5);
-        _choiceMinusButton.SetActive(false);
-        _choicePlusButton.SetActive(false);
-        _nextButton.SetActive(true);
-    }
-
-    public void ChangeRow()
-    {
-        if (!_choiceDone) return;
-
-        _dialogueComponent.GetNextRow();
+        if (_choiceMinusText != null) _choiceMinusText.text = _currentDialogue.GetCalmChoiceText();
+        if (_choicePlusText != null) _choicePlusText.text = _currentDialogue.GetPanicChoiceText();
     }
 
     public void UpdateText()
     {
-        Debug.Log("UI UpdateText -> " + _dialogueComponent.GetCharacterName() + " / " + _dialogueComponent.GetDialogueText());
-        _characterNameText.text = _dialogueComponent.GetCharacterName();
-        _dialogueText.text = _dialogueComponent.GetDialogueText();
+        if (_currentDialogue == null) return;
+
+        _characterNameText.text = _currentDialogue.GetCharacterName();
+        _dialogueText.text = _currentDialogue.GetDialogueText();
     }
 
-    public void EndDialogue()
+    // Bouton Next
+    public void ChangeRow()
     {
-        
-        _dialoguePanel.SetActive(false);
-        _characterNameText.text = "";
-        _dialogueText.text = "";
+        if (!_dialogueOpen || _currentDialogue == null) return;
+        _currentDialogue.GetNextRow();
+    }
+
+    // Choix -5 (calm=true)
+    public void ChooseMinus5()
+    {
+        if (!_dialogueOpen || _currentDialogue == null) return;
+        if (_choiceDone) return;
+
+        _choiceDone = true;
+
+        _currentDialogue.ChooseBranch(true);
+
         _choiceMinusButton.SetActive(false);
         _choicePlusButton.SetActive(false);
-        _nextButton.SetActive(false);
+        _nextButton.SetActive(true);
+    }
+
+    // Choix +5 (calm=false)
+    public void ChoosePlus5()
+    {
+        if (!_dialogueOpen || _currentDialogue == null) return;
+        if (_choiceDone) return;
+
+        _choiceDone = true;
+
+        _currentDialogue.ChooseBranch(false);
+
+        _choiceMinusButton.SetActive(false);
+        _choicePlusButton.SetActive(false);
+        _nextButton.SetActive(true);
+    }
+    public void EndDialogue()
+    {
+        _dialogueOpen = false;
         _choiceDone = false;
-        _dialogueComponent = null;
+        _currentDialogue = null;
+
+        _dialoguePanel.SetActive(false);
+
+        _nextButton.SetActive(false);
+        _choiceMinusButton.SetActive(true);
+        _choicePlusButton.SetActive(true);
     }
 }

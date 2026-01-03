@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57068bf627ccf8489974b3146ae6144, type: 3}
+  m_Name: FantomeDialogue
+  m_EditorClassIdentifier: 
+  rows:
+  - rowNumber: 0
+    charactereName: "Fant\xF4me"
+    longDialogueText: "Oh\u2026 une vivante ?"
+    nextRowNumber: 1
+  - rowNumber: 1
+    charactereName: "Fant\xF4me"
+    longDialogueText: "Tu n\u2019as rien \xE0 faire ici."
+    nextRowNumber: 2
+  - rowNumber: 2
+    charactereName: Ava
+    longDialogueText: "Je ne cherche pas d\u2019ennuis. Je veux juste comprendre
+      o\xF9 je suis."
+    nextRowNumber: 3
+  - rowNumber: 3
+    charactereName: "Fant\xF4me"
+    longDialogueText: "Alors tu es plus forte que tu ne le crois\u2026 Peu gardent
+      leur calme ici. Tu peux passer."
+    nextRowNumber: -1
+  - rowNumber: 4
+    charactereName: Ava
+    longDialogueText: "\xC9loigne-toi de moi ! Je ne veux pas rester ici !"
+    nextRowNumber: 5
+  - rowNumber: 5
+    charactereName: "Fant\xF4me"
+    longDialogueText: "La peur te trahit\u2026 et elle attire des choses bien pires
+      que moi."
+    nextRowNumber: -1
