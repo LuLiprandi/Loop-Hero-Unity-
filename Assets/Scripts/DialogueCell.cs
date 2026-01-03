@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class DialogueCell : Cell 
+public class DialogueCell : Cell
 {
-    public override void Activate(Pawn pawn) 
+    public override void Activate(Pawn pawn)
     {
-
-    }   
-
+       
+        base.Activate(pawn);
+    }
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   _cellNumber: 0
-  _fear: 0
+  _fear: 5
