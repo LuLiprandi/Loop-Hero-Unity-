@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a57068bf627ccf8489974b3146ae6144, type: 3}
-  m_Name: SqueletteDialogue 1
+  m_Name: SqueletteDialogue2Main
   m_EditorClassIdentifier: 
   rows:
   - rowNumber: 0
     charactereName: Squelette
-    longDialogueText: "Clac\u2026 clac\u2026 Tu n\u2019as rien \xE0 faire ici, petite."
+    longDialogueText: "Clac\u2026 clac\u2026 Tu n\u2019as rien \xE0 faire ici, petite.
+      Tu marches vite."
     nextRowNumber: 1
   - rowNumber: 1
     charactereName: Ava
     longDialogueText: "Je\u2026 je cherche de l\u2019aide. Je ne veux pas d\u2019ennuis...
-      je cherche mon chemin. "
+      Je veux sortir de cette for\xEAt."
     nextRowNumber: 2
   - rowNumber: 2
     charactereName: Ava
@@ -29,14 +30,18 @@ MonoBehaviour:
     nextRowNumber: 3
   - rowNumber: 3
     charactereName: Squelette
-    longDialogueText: "Oui. C'est tout droit mais attention... la for\xEAt n'aiment
-      pas les peureux. "
+    longDialogueText: Oui. C'est tout droit mais attention... Plus tu fuis, plus
+      les arbres se rapprochent.
     nextRowNumber: -1
   - rowNumber: 4
-    charactereName: Squelette
-    longDialogueText: "Tu n'es pas tr\xE8s courageuse...."
+    charactereName: Ava
+    longDialogueText: Je dois continuer a marcher vite...
     nextRowNumber: 5
   - rowNumber: 5
     charactereName: Squelette
-    longDialogueText: "\u2026Tant pis. Continue seule."
+    longDialogueText: "Ceux qui observent \xE9vitent les pi\xE8ges."
+    nextRowNumber: 6
+  - rowNumber: 5
+    charactereName: Squelette
+    longDialogueText: La peur confond vitesse et survie.
     nextRowNumber: -1

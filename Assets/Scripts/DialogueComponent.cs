@@ -2,64 +2,82 @@
 
 public class DialogueComponent : MonoBehaviour, IActionnable
 {
-    [Header("Dialogue Data")]
+    [Header("Runtime data (set by DialogueSwitcher)")]
     [SerializeField] private DialogueDatas _dialogueDatas;
-    [SerializeField] private UIDialogueController _dialogueController;
+    [SerializeField] private UIDialogueController _ui;
 
-    private DialogueRow _currentRow;
-    private int _currentRowIndex;
-    private Pawn _currentPawn;
+    [Header("Branching (set by DialogueSwitcher)")]
+    [SerializeField] private int _calmStartRowIndex = -1;
+    [SerializeField] private int _panicStartRowIndex = -1;
 
-    [Header("Branching (for choice dialogues)")]
-    [SerializeField] private int _calmStartRowIndex = -1;  // index dans rows[]
-    [SerializeField] private int _panicStartRowIndex = -1; // index dans rows[]
-
-    [Header("Choice Texts")]
+    [Header("Choice Texts (set by DialogueSwitcher)")]
     [SerializeField] private string _calmChoiceText = "Calme";
     [SerializeField] private string _panicChoiceText = "Crier";
 
+    private Pawn _currentPawn;
+    private int _currentRowIndex;
+    private DialogueRow _currentRow;
+
+    // --- Setters used by DialogueSwitcher ---
+    public void SetDatas(DialogueDatas datas)
+    {
+        _dialogueDatas = datas;
+    }
+
+    public void SetChoiceTexts(string calmText, string panicText)
+    {
+        _calmChoiceText = calmText;
+        _panicChoiceText = panicText;
+    }
+
+    public void SetBranching(int calmStartRowIndex, int panicStartRowIndex)
+    {
+        _calmStartRowIndex = calmStartRowIndex;
+        _panicStartRowIndex = panicStartRowIndex;
+    }
+
+    // --- IActionnable ---
     public void Action(Pawn currentPawn)
     {
         _currentPawn = currentPawn;
+
         _currentRowIndex = 0;
+        _currentRow = GetRow(_currentRowIndex);
 
-        if (_dialogueDatas == null || _dialogueDatas.rows == null || _dialogueDatas.rows.Length == 0)
-            return;
-
-        _currentRow = _dialogueDatas.rows[_currentRowIndex];
-
-        _dialogueController.StartDialogue(this);
-        _dialogueController.UpdateText();
+        _ui.StartDialogue(this);
     }
 
-    public string GetDialogueText() => _currentRow.longDialogueText;
-    public string GetCharacterName() => _currentRow.charactereName;
-
-    public string GetCalmChoiceText() => _calmChoiceText;
-    public string GetPanicChoiceText() => _panicChoiceText;
-    public void GetNextRow()
+    private DialogueRow GetRow(int index)
     {
-        if (_currentRow.nextRowNumber == -1)
-        {
-            _currentRowIndex = 0;
-            _dialogueController.EndDialogue();
-            return;
-        }
+        if (_dialogueDatas == null || _dialogueDatas.rows == null || _dialogueDatas.rows.Length == 0)
+            return default;
 
-        int nextIndex = _currentRow.nextRowNumber;
-        if (nextIndex < 0 || nextIndex >= _dialogueDatas.rows.Length)
-        {
-            _currentRowIndex = 0;
-            _dialogueController.EndDialogue();
-            return;
-        }
-
-        _currentRowIndex = nextIndex;
-        _currentRow = _dialogueDatas.rows[_currentRowIndex];
-        _dialogueController.UpdateText();
+        index = Mathf.Clamp(index, 0, _dialogueDatas.rows.Length - 1);
+        return _dialogueDatas.rows[index];
     }
+
+    public string GetDialogueText()
+    {
+        return _currentRow.longDialogueText;
+    }
+
+    public string GetCharacterName()
+    {
+        return _currentRow.charactereName;
+    }
+
+    public bool HasChoice()
+    {
+        // Choice exists only if both indices are set correctly
+        return _calmStartRowIndex >= 0 && _panicStartRowIndex >= 0;
+    }
+
+    public string GetMinusChoiceText() => _calmChoiceText;
+    public string GetPlusChoiceText() => _panicChoiceText;
+
     public void ChooseBranch(bool calm)
     {
+        // apply fear
         if (_currentPawn != null)
         {
             if (calm) _currentPawn.ReduceFear(5);
@@ -67,12 +85,34 @@ public class DialogueComponent : MonoBehaviour, IActionnable
         }
 
         int target = calm ? _calmStartRowIndex : _panicStartRowIndex;
-        if (target < 0) return;
+
+        // safety
         if (_dialogueDatas == null || _dialogueDatas.rows == null) return;
-        if (target >= _dialogueDatas.rows.Length) return;
+        if (target < 0 || target >= _dialogueDatas.rows.Length) return;
 
         _currentRowIndex = target;
-        _currentRow = _dialogueDatas.rows[_currentRowIndex];
-        _dialogueController.UpdateText();
+        _currentRow = GetRow(_currentRowIndex);
+
+        _ui.RefreshUI();
+    }
+
+    public void NextRow()
+    {
+        if (_dialogueDatas == null || _dialogueDatas.rows == null) return;
+
+        if (_currentRow.nextRowNumber == -1)
+        {
+            // reset for next time
+            _currentRowIndex = 0;
+            _currentRow = GetRow(_currentRowIndex);
+
+            _ui.EndDialogue(this);
+            return;
+        }
+
+        _currentRowIndex = _currentRow.nextRowNumber;
+        _currentRow = GetRow(_currentRowIndex);
+
+        _ui.RefreshUI();
     }
 }

@@ -10,33 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a57068bf627ccf8489974b3146ae6144, type: 3}
-  m_Name: FantomeDialogue
+  m_Name: FantomeDialogue5After
   m_EditorClassIdentifier: 
   rows:
   - rowNumber: 0
     charactereName: "Fant\xF4me"
-    longDialogueText: "Oh\u2026 une vivante ?"
+    longDialogueText: "Tu avances m\xEAme fatigu\xE9e\u2026 c\u2019est rare."
     nextRowNumber: 1
   - rowNumber: 1
-    charactereName: "Fant\xF4me"
-    longDialogueText: "Tu n\u2019as rien \xE0 faire ici."
+    charactereName: Ava
+    longDialogueText: "Je n\u2019ai pas le choix."
     nextRowNumber: 2
   - rowNumber: 2
-    charactereName: Ava
-    longDialogueText: "Je ne cherche pas d\u2019ennuis. Je veux juste comprendre
-      o\xF9 je suis."
-    nextRowNumber: 3
+    charactereName: "Fant\xF4me"
+    longDialogueText: Si. Tu as choisi de continuer.
+    nextRowNumber: -1
   - rowNumber: 3
     charactereName: "Fant\xF4me"
-    longDialogueText: "Alors tu es plus forte que tu ne le crois\u2026 Peu gardent
-      leur calme ici. Tu peux passer."
-    nextRowNumber: -1
+    longDialogueText: "Tu es encore l\xE0\u2026 malgr\xE9 ton \u201Cj\u2019en peux
+      plus\u201D."
+    nextRowNumber: 4
   - rowNumber: 4
     charactereName: Ava
-    longDialogueText: "\xC9loigne-toi de moi ! Je ne veux pas rester ici !"
+    longDialogueText: "Je pensais que j\u2019allais craquer."
     nextRowNumber: 5
   - rowNumber: 5
     charactereName: "Fant\xF4me"
-    longDialogueText: "La peur te trahit\u2026 et elle attire des choses bien pires
-      que moi."
+    longDialogueText: Fais attention. La fatigue fait tomber sans bruit.
     nextRowNumber: -1

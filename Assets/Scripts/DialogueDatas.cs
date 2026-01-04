@@ -6,7 +6,7 @@ public struct DialogueRow
     public int rowNumber;
     public string charactereName;
     [TextArea(2, 5)] public string longDialogueText;
-    public int nextRowNumber; // -1 = fin
+    public int nextRowNumber; 
 }
 
 [CreateAssetMenu(fileName = "DialogueDatas", menuName = "Scriptable Objects/DialogueDatas")]

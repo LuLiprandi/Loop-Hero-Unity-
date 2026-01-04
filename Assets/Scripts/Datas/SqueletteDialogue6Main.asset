@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57068bf627ccf8489974b3146ae6144, type: 3}
+  m_Name: SqueletteDialogue6Main
+  m_EditorClassIdentifier: 
+  rows:
+  - rowNumber: 0
+    charactereName: Squelette
+    longDialogueText: "Tu te rapproche du puit.. on dis q'un tr\xE9sort si trouve.."
+    nextRowNumber: 1
+  - rowNumber: 1
+    charactereName: Ava
+    longDialogueText: "Un tr\xE9sort?"
+    nextRowNumber: 2
+  - rowNumber: 2
+    charactereName: Squelette
+    longDialogueText: Continue a avancer et tu verra...
+    nextRowNumber: 3
+  - rowNumber: 3
+    charactereName: Ava
+    longDialogueText: D'accord
+    nextRowNumber: -1
+  - rowNumber: 4
+    charactereName: Ava
+    longDialogueText: J'ai peur... Je ne te crois pas...
+    nextRowNumber: -1

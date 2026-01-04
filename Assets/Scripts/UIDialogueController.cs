@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class UIDialogueController : MonoBehaviour
@@ -8,7 +9,7 @@ public class UIDialogueController : MonoBehaviour
     [SerializeField] private TMP_Text _characterNameText;
     [SerializeField] private TMP_Text _dialogueText;
 
-    [Header("Buttons GameObjects")]
+    [Header("Buttons (GameObjects)")]
     [SerializeField] private GameObject _nextButton;
     [SerializeField] private GameObject _choiceMinusButton;
     [SerializeField] private GameObject _choicePlusButton;
@@ -16,6 +17,8 @@ public class UIDialogueController : MonoBehaviour
     [Header("Choice Button Texts (TMP)")]
     [SerializeField] private TMP_Text _choiceMinusText;
     [SerializeField] private TMP_Text _choicePlusText;
+
+    public event Action<DialogueComponent> OnDialogueClosed;
 
     private DialogueComponent _currentDialogue;
     private bool _dialogueOpen;
@@ -27,72 +30,79 @@ public class UIDialogueController : MonoBehaviour
 
         _dialogueOpen = true;
         _choiceDone = false;
+
         _currentDialogue = dialogue;
 
         _dialoguePanel.SetActive(true);
-
-        _choiceMinusButton.SetActive(true);
-        _choicePlusButton.SetActive(true);
-        _nextButton.SetActive(false);
-
-        if (_choiceMinusText != null) _choiceMinusText.text = _currentDialogue.GetCalmChoiceText();
-        if (_choicePlusText != null) _choicePlusText.text = _currentDialogue.GetPanicChoiceText();
+        RefreshUI();
     }
 
-    public void UpdateText()
+    public void RefreshUI()
     {
         if (_currentDialogue == null) return;
 
         _characterNameText.text = _currentDialogue.GetCharacterName();
         _dialogueText.text = _currentDialogue.GetDialogueText();
+
+        bool hasChoiceNow = _currentDialogue.HasChoice() && !_choiceDone;
+
+        _choiceMinusButton.SetActive(hasChoiceNow);
+        _choicePlusButton.SetActive(hasChoiceNow);
+        _nextButton.SetActive(!hasChoiceNow);
+
+        if (hasChoiceNow)
+        {
+            if (_choiceMinusText != null) _choiceMinusText.text = _currentDialogue.GetMinusChoiceText();
+            if (_choicePlusText != null) _choicePlusText.text = _currentDialogue.GetPlusChoiceText();
+        }
     }
 
-    // Bouton Next
+    // Button Next -> OnClick
     public void ChangeRow()
     {
-        if (!_dialogueOpen || _currentDialogue == null) return;
-        _currentDialogue.GetNextRow();
+        if (!_dialogueOpen) return;
+        if (_currentDialogue == null) return;
+
+        // If choice is required, block Next until choice is done
+        if (_currentDialogue.HasChoice() && !_choiceDone) return;
+
+        _currentDialogue.NextRow();
     }
 
-    // Choix -5 (calm=true)
+    // Button choice -5 -> OnClick
     public void ChooseMinus5()
     {
-        if (!_dialogueOpen || _currentDialogue == null) return;
+        if (!_dialogueOpen) return;
+        if (_currentDialogue == null) return;
         if (_choiceDone) return;
 
         _choiceDone = true;
-
-        _currentDialogue.ChooseBranch(true);
-
-        _choiceMinusButton.SetActive(false);
-        _choicePlusButton.SetActive(false);
-        _nextButton.SetActive(true);
+        _currentDialogue.ChooseBranch(calm: true);
+        RefreshUI();
     }
 
-    // Choix +5 (calm=false)
+    // Button choice +5 -> OnClick
     public void ChoosePlus5()
     {
-        if (!_dialogueOpen || _currentDialogue == null) return;
+        if (!_dialogueOpen) return;
+        if (_currentDialogue == null) return;
         if (_choiceDone) return;
 
         _choiceDone = true;
-
-        _currentDialogue.ChooseBranch(false);
-
-        _choiceMinusButton.SetActive(false);
-        _choicePlusButton.SetActive(false);
-        _nextButton.SetActive(true);
+        _currentDialogue.ChooseBranch(calm: false);
+        RefreshUI();
     }
-    public void EndDialogue()
+
+    public void EndDialogue(DialogueComponent dialogue)
     {
+        if (!_dialogueOpen) return;
+
         _dialogueOpen = false;
         _choiceDone = false;
-        _currentDialogue = null;
-
         _dialoguePanel.SetActive(false);
 
-        _nextButton.SetActive(false);
-        _choiceMinusButton.SetActive(true);
-        _choicePlusButton.SetActive(true);
+        OnDialogueClosed?.Invoke(dialogue);
+
+        _currentDialogue = null;
     }
 }

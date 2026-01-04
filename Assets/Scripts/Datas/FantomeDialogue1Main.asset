@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57068bf627ccf8489974b3146ae6144, type: 3}
+  m_Name: FantomeDialogue1Main
+  m_EditorClassIdentifier: 
+  rows:
+  - rowNumber: 0
+    charactereName: Ava
+    longDialogueText: "O\xF9...O\xF9 suis-je?"
+    nextRowNumber: 1
+  - rowNumber: 1
+    charactereName: Ava
+    longDialogueText: "O\xF9 est tout le monde\u2026?\nIl y avait des gens avec moi\u2026"
+    nextRowNumber: 2
+  - rowNumber: 2
+    charactereName: "Fant\xF4me"
+    longDialogueText: Ils sont partis. Sans toi.
+    nextRowNumber: 3
+  - rowNumber: 3
+    charactereName: Ava
+    longDialogueText: Ils reviendront. Je dois juste trouver un endroit pour passer
+      la nuit.
+    nextRowNumber: -1
+  - rowNumber: 4
+    charactereName: Ava
+    longDialogueText: "Je suis toute seule\u2026\nJe n\u2019aurais jamais d\xFB m\u2019endormir.
+      Qu'est ce que je vais faire maintenant? "
+    nextRowNumber: 5
+  - rowNumber: 5
+    charactereName: "Fant\xF4me"
+    longDialogueText: "La solitude est la premi\xE8re porte de la peur. Un conseil
+      gamine... ne te laisse pas avoir par celle-ci."
+    nextRowNumber: -1
