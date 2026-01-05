@@ -15,7 +15,7 @@ MonoBehaviour:
   rows:
   - rowNumber: 0
     charactereName: Squelette
-    longDialogueText: "Clac\u2026 clac\u2026 Tu n\u2019as rien \xE0 faire ici, petite.
+    longDialogueText: "Clac\u2026 clac\u2026 Tu n\u2019as rien \xE0 faire ici petite.
       Tu marches vite."
     nextRowNumber: 1
   - rowNumber: 1

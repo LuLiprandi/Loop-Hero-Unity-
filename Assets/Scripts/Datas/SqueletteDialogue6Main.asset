@@ -15,11 +15,11 @@ MonoBehaviour:
   rows:
   - rowNumber: 0
     charactereName: Squelette
-    longDialogueText: "Tu te rapproche du puit.. on dis q'un tr\xE9sort si trouve.."
+    longDialogueText: "Tu te rapproche du puit.. on dis q'un tr\xE9sor si trouve.."
     nextRowNumber: 1
   - rowNumber: 1
     charactereName: Ava
-    longDialogueText: "Un tr\xE9sort?"
+    longDialogueText: "Un tr\xE9sor ?"
     nextRowNumber: 2
   - rowNumber: 2
     charactereName: Squelette
