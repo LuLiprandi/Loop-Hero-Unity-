@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3769637284301964065}
   - component: {fileID: 139862597430944547}
   m_Layer: 0
-  m_Name: DialogueCell 1
+  m_Name: VictoryDialogueCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 33b64a30e4ff72246a3076f71c78fc38, type: 2}
+  - {fileID: 2100000, guid: d51b8c981f131ba41a1d68cc1dd0e7b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

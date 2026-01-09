@@ -68,7 +68,7 @@ public class DialogueComponent : MonoBehaviour, IActionnable
 
     public bool HasChoice()
     {
-        // Choice exists only if both indices are set correctly
+        
         return _calmStartRowIndex >= 0 && _panicStartRowIndex >= 0;
     }
 
@@ -86,7 +86,7 @@ public class DialogueComponent : MonoBehaviour, IActionnable
 
         int target = calm ? _calmStartRowIndex : _panicStartRowIndex;
 
-        // safety
+        
         if (_dialogueDatas == null || _dialogueDatas.rows == null) return;
         if (target < 0 || target >= _dialogueDatas.rows.Length) return;
 

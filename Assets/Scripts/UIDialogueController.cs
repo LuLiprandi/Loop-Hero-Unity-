@@ -63,7 +63,7 @@ public class UIDialogueController : MonoBehaviour
         if (!_dialogueOpen) return;
         if (_currentDialogue == null) return;
 
-        // If choice is required, block Next until choice is done
+     
         if (_currentDialogue.HasChoice() && !_choiceDone) return;
 
         _currentDialogue.NextRow();
