@@ -9,6 +9,11 @@ public class PlayerDatas : ScriptableObject
 
     [SerializeField] private List<int> _doneDialogues = new List<int>();
 
+    private void Awake()
+    {
+        _cellNumber = 0;
+        _fear = 0;
+    }
     public bool IsDialogueDone(int dialogueId)
     {
         return _doneDialogues.Contains(dialogueId);

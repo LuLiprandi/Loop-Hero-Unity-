@@ -38,13 +38,15 @@ public class Pawn : MonoBehaviour
         {
          int nextcell = _playerDatas._cellNumber + 1;
 
+        
+
          if (nextcell >= _board.CellCount)
          break;
 
          _playerDatas._cellNumber = nextcell;
             MoveToCell();
 
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(1f);
         }
        ActivateCell();
          _isMoving = false;
