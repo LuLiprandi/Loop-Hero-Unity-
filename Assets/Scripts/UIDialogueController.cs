@@ -23,6 +23,7 @@ public class UIDialogueController : MonoBehaviour
     private DialogueComponent _currentDialogue;
     private bool _dialogueOpen;
     private bool _choiceDone;
+    public bool IsDialogueOpen { get; private set; }
 
     public void StartDialogue(DialogueComponent dialogue)
     {
@@ -32,6 +33,9 @@ public class UIDialogueController : MonoBehaviour
         _choiceDone = false;
 
         _currentDialogue = dialogue;
+
+        Debug.Log("StartDialogue called");
+        IsDialogueOpen = true;
 
         _dialoguePanel.SetActive(true);
         RefreshUI();
@@ -100,6 +104,9 @@ public class UIDialogueController : MonoBehaviour
         _dialogueOpen = false;
         _choiceDone = false;
         _dialoguePanel.SetActive(false);
+
+        Debug.Log("EndDialogue called");
+        IsDialogueOpen = false;
 
         OnDialogueClosed?.Invoke(dialogue);
 
