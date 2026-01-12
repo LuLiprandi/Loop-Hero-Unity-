@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d71ea3d3654754eb28f6519c6dd96d, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _cellNumber: 4
-  _fear: 5
+  _cellNumber: 14
+  _fear: 50
   _doneDialogues: 

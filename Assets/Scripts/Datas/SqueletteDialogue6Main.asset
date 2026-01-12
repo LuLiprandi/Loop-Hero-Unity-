@@ -15,21 +15,17 @@ MonoBehaviour:
   rows:
   - rowNumber: 0
     charactereName: Squelette
-    longDialogueText: "Tu te rapproche du puit.. on dis q'un tr\xE9sor si trouve.."
+    longDialogueText: "Continue par ici il y a un tr\xE9sor pas loin"
     nextRowNumber: 1
   - rowNumber: 1
     charactereName: Ava
-    longDialogueText: "Un tr\xE9sor ?"
+    longDialogueText: "un tr\xE9sor ? "
     nextRowNumber: 2
   - rowNumber: 2
-    charactereName: Squelette
-    longDialogueText: Continue a avancer et tu verra...
-    nextRowNumber: 3
+    charactereName: Ava
+    longDialogueText: 'Okay j''y vais !  '
+    nextRowNumber: -1
   - rowNumber: 3
     charactereName: Ava
-    longDialogueText: D'accord
-    nextRowNumber: -1
-  - rowNumber: 4
-    charactereName: Ava
-    longDialogueText: J'ai peur... Je ne te crois pas...
+    longDialogueText: Je ne te crois pas.
     nextRowNumber: -1

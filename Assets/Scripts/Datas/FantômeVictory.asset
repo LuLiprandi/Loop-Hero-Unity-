@@ -10,18 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a57068bf627ccf8489974b3146ae6144, type: 3}
-  m_Name: SqueletteDialogue6After
+  m_Name: "Fant\xF4meVictory"
   m_EditorClassIdentifier: 
   rows:
   - rowNumber: 0
-    charactereName: Squelette
-    longDialogueText: "Alors tu as trouv\xE9 ce tr\xE9sor ?"
-    nextRowNumber: 1
-  - rowNumber: 1
-    charactereName: Ava
-    longDialogueText: 'Oui ! '
-    nextRowNumber: -1
-  - rowNumber: 2
-    charactereName: Ava
-    longDialogueText: Non
+    charactereName: "Fant\xF4me"
+    longDialogueText: "Bravo tu est arriv\xE9 jusqu'ici ! tiens je te donne cette
+      cl\xE9, elle ouvre le manoir."
     nextRowNumber: -1

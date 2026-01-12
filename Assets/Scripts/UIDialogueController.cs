@@ -17,6 +17,8 @@ public class UIDialogueController : MonoBehaviour
     [Header("Choice Button Texts (TMP)")]
     [SerializeField] private TMP_Text _choiceMinusText;
     [SerializeField] private TMP_Text _choicePlusText;
+    [Header("Game References")]
+    [SerializeField] private Dice _diceController;
 
     public event Action<DialogueComponent> OnDialogueClosed;
 
@@ -38,8 +40,15 @@ public class UIDialogueController : MonoBehaviour
         IsDialogueOpen = true;
 
         _dialoguePanel.SetActive(true);
+
+        if (_diceController != null)
+        {
+            _diceController.DisableDiceButton();
+        }
+
         RefreshUI();
     }
+
 
     public void RefreshUI()
     {
@@ -108,8 +117,14 @@ public class UIDialogueController : MonoBehaviour
         Debug.Log("EndDialogue called");
         IsDialogueOpen = false;
 
+        if (_diceController != null)
+        {
+            _diceController.EnableDiceButton();
+        }
+
         OnDialogueClosed?.Invoke(dialogue);
 
         _currentDialogue = null;
     }
+
 }
