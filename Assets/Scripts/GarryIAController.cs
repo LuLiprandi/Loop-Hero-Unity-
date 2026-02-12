@@ -21,6 +21,7 @@ public class GarryIAControlller : MonoBehaviour
         if (TestChangeState())
         {
             ChangeState();
+            Debug.Log("State changed to " + state);
         }
         BehaviourAction();
     }
@@ -48,7 +49,7 @@ public class GarryIAControlller : MonoBehaviour
                 if(GetComponent<SightPerception>().isDetected)
                 {
                     if (Vector3.Distance(target.transform.position, transform.position) <= catchDistance)
-                    {
+                    { 
                         nextState = StateType.Catch;
                         return true;
 
