@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 34712431}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 100.58, y: 1.17, z: -7.43}
+  m_LocalPosition: {x: 90.95, y: 1.17, z: -5.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -632,8 +632,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89943212}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5918073, y: 1.7307962, z: -2.7257535}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5918045, y: 1.7307962, z: -2.7257538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1292,6 +1292,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 201c9596d08f5a0448d336d275a07daa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 418695298}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 201c9596d08f5a0448d336d275a07daa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 418695302}
   m_SourcePrefab: {fileID: 100100000, guid: 201c9596d08f5a0448d336d275a07daa, type: 3}
 --- !u!1001 &198139034
 PrefabInstance:
@@ -3757,11 +3760,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fbe474f07f1c74d9b2dfc996e1353a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 2
+  state: 1
   nextState: 0
   target: {fileID: 935911126}
   navepoint: {fileID: 34712431}
   catchDistance: 1.5
+--- !u!114 &418695302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418695296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5073a872e6816f748b33593a393cfaef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDetected: 0
+  detectionRadius: 5
+  detectionObject: {fileID: 935911126}
 --- !u!1001 &425425208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8906,7 +8924,7 @@ Transform:
   m_GameObject: {fileID: 935911126}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.05168767, z: 4.6566123e-10, w: 0.9986633}
-  m_LocalPosition: {x: 89.72755, y: 0.25643456, z: -9.335766}
+  m_LocalPosition: {x: 98.87, y: 0.91, z: -11.62}
   m_LocalScale: {x: 0.5515198, y: 0.5515198, z: 0.55151975}
   m_ConstrainProportionsScale: 0
   m_Children: []
