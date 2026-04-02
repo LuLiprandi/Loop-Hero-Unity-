@@ -62,7 +62,7 @@ public class MiniGameManager : MonoBehaviour
         _timerText.text = $"{minutes:0}:{seconds:00}";
     }
 
-    /// <summary>Appelé par GarryIAControlller quand Ava est attrapée.</summary>
+    
     public void OnPlayerCaught()
     {
         if (_gameOver) return;
@@ -77,7 +77,7 @@ public class MiniGameManager : MonoBehaviour
         StartCoroutine(ReturnToMainSceneAfterDelay(ReturnDelayAfterCaught));
     }
 
-    /// <summary>Appelé par ReturnCell quand Ava marche sur la case retour.</summary>
+    
     public void ReturnToMainScene()
     {
         SceneManager.LoadScene(MainSceneName);

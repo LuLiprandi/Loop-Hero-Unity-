@@ -52,7 +52,7 @@ public class AvaController : MonoBehaviour
         _characterController.Move(motion);
     }
 
-    /// <summary>Bloque ou débloque le déplacement du joueur.</summary>
+    
     public void SetMovement(bool enabled)
     {
         _canMove       = enabled;
