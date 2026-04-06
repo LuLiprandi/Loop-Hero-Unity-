@@ -521,6 +521,7 @@ MonoBehaviour:
   _screamDuration: 2
   _catchAnimDuration: 1.5
   _waypointWaitDuration: 1
+  _periodicScreamInterval: 30
 --- !u!1 &394472541
 GameObject:
   m_ObjectHideFlags: 0
