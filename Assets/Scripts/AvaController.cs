@@ -39,10 +39,13 @@ public class AvaController : MonoBehaviour
         float vertical   = 0f;
 
         Keyboard kb = Keyboard.current;
-        if (kb.qKey.isPressed) horizontal = -1f;
-        if (kb.dKey.isPressed) horizontal =  1f;
-        if (kb.zKey.isPressed) vertical   =  1f;
-        if (kb.sKey.isPressed) vertical   = -1f;
+
+        // Sur AZERTY, Unity Input System mappe les touches par position physique :
+        // Z (AZERTY) = wKey, Q (AZERTY) = aKey, S = sKey, D = dKey
+        if (kb.aKey.isPressed) horizontal =  1f;
+        if (kb.dKey.isPressed) horizontal = -1f;
+        if (kb.wKey.isPressed) vertical   = -1f;
+        if (kb.sKey.isPressed) vertical   =  1f;
 
         _moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
