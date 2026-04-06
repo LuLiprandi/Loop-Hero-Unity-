@@ -60,7 +60,7 @@ public class GarryIAControlller : MonoBehaviour
         ExecuteCurrentState();
     }
 
-    /// <summary>Déclenche un cri toutes les X secondes en état Patrol.</summary>
+    
     private void HandlePeriodicScream()
     {
         if (_currentState != StateType.Patrol) return;

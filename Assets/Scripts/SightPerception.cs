@@ -7,7 +7,7 @@ public class SightPerception : MonoBehaviour
     [SerializeField] private float      detectionRadius = 8f;
     [SerializeField] private GameObject detectionObject;
 
-    /// <summary>Hauteur du point d'émission du rayon (niveau des yeux de Garry).</summary>
+  
     private const float EyeHeight = 1.5f;
 
     private void Update()
@@ -29,7 +29,7 @@ public class SightPerception : MonoBehaviour
             return;
         }
 
-        // Si le raycast touche quelque chose avant Ava, elle est cachée
+        
         if (Physics.Raycast(origin, direction.normalized, out RaycastHit hit, distance))
             isDetected = hit.collider.gameObject == detectionObject;
         else
