@@ -11,6 +11,7 @@ public class MiniGameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject _caughtPanel;
+    [SerializeField] private GameObject _victoryPanel;
     [SerializeField] private GameObject _returnCellObject;
 
     [Header("References")]
@@ -19,7 +20,7 @@ public class MiniGameManager : MonoBehaviour
 
     [Header("Fear Impact")]
     [SerializeField] private int _fearReductionOnSurvive = 20;
-    [SerializeField] private int _fearIncreaseOnCaught   = 15;
+    [SerializeField] private int _fearIncreaseOnCaught   = 20;
 
     private float _remainingTime;
     private bool  _gameOver = false;
@@ -31,6 +32,7 @@ public class MiniGameManager : MonoBehaviour
     {
         _remainingTime = _gameDuration;
         _caughtPanel?.SetActive(false);
+        _victoryPanel?.SetActive(false);
         _returnCellObject?.SetActive(false);
 
         UpdateTimerUI();
@@ -80,6 +82,7 @@ public class MiniGameManager : MonoBehaviour
     
     public void ReturnToMainScene()
     {
+        GameInitializer.ReturningFromMiniGame = true;
         SceneManager.LoadScene(MainSceneName);
     }
 
@@ -90,7 +93,9 @@ public class MiniGameManager : MonoBehaviour
 
         ApplyFearBonus(_fearReductionOnSurvive);
 
-        _returnCellObject?.SetActive(true);
+        _victoryPanel?.SetActive(true);
+
+        StartCoroutine(ReturnToMainSceneAfterDelay(ReturnDelayAfterCaught));
     }
 
     private void ApplyFearPenalty(int amount)
@@ -108,6 +113,7 @@ public class MiniGameManager : MonoBehaviour
     private IEnumerator ReturnToMainSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+        GameInitializer.ReturningFromMiniGame = true;
         SceneManager.LoadScene(MainSceneName);
     }
 }

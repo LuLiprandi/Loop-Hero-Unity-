@@ -10,8 +10,20 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private int _startingCell = 0;
     [SerializeField] private int _startingFear = 30;
 
+    /// <summary>
+    /// Mis à true par le mini-jeu avant de revenir sur Dev_map
+    /// pour empêcher le reset des données du joueur.
+    /// </summary>
+    public static bool ReturningFromMiniGame = false;
+
     private void Awake()
     {
+        if (ReturningFromMiniGame)
+        {
+            ReturningFromMiniGame = false;
+            return;
+        }
+
         InitializeGame();
     }
 

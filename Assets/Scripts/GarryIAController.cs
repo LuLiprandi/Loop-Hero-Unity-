@@ -23,7 +23,7 @@ public class GarryIAControlller : MonoBehaviour
     [SerializeField] private float _screamDuration       = 2f;
     [SerializeField] private float _catchAnimDuration    = 1.5f;
     [SerializeField] private float _waypointWaitDuration = 1f;
-
+    [SerializeField] private float _periodicScreamInterval = 30f;
 
     private static readonly int SpeedHash  = Animator.StringToHash("Speed");
     private static readonly int CatchHash  = Animator.StringToHash("Catch");
@@ -37,6 +37,7 @@ public class GarryIAControlller : MonoBehaviour
     private int       _waypointIndex = 0;
     private bool      _locked = false;     
     private bool      _waitingAtWaypoint = false;
+    private float     _periodicScreamTimer = 0f;
 
     private void Awake()
     {
@@ -54,8 +55,22 @@ public class GarryIAControlller : MonoBehaviour
     {
         if (_locked) return;
 
+        HandlePeriodicScream();
         EvaluateTransitions();
         ExecuteCurrentState();
+    }
+
+    /// <summary>Déclenche un cri toutes les X secondes en état Patrol.</summary>
+    private void HandlePeriodicScream()
+    {
+        if (_currentState != StateType.Patrol) return;
+
+        _periodicScreamTimer += Time.deltaTime;
+        if (_periodicScreamTimer >= _periodicScreamInterval)
+        {
+            _periodicScreamTimer = 0f;
+            EnterState(StateType.Scream);
+        }
     }
 
 
@@ -149,6 +164,8 @@ public class GarryIAControlller : MonoBehaviour
 
     private IEnumerator ScreamRoutine()
     {
+        bool wasFollowing = _currentState == StateType.Follow;
+
         _locked          = true;
         _agent.isStopped = true;
         _animator.SetFloat(SpeedHash, 0f);
@@ -157,7 +174,7 @@ public class GarryIAControlller : MonoBehaviour
         yield return new WaitForSeconds(_screamDuration);
 
         _locked = false;
-        EnterState(StateType.Follow);
+        EnterState(wasFollowing ? StateType.Follow : StateType.Patrol);
     }
 
     private IEnumerator CatchRoutine()
