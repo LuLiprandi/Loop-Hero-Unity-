@@ -136,7 +136,11 @@ Jauge de peur visible en permanence
 
 # 
 
-# 
+
+
+MINI JEU : 
+
+Tandis que le sort des fantômes se referme sur elle, Ava doit impérativement se dérober au regard vigilant du propriétaire du manoir. Arriverez vous à vous cacher de celui ci ? Attention au conséquences !
 
 # 
 
