@@ -1025,7 +1025,7 @@ MonoBehaviour:
   _victoryPanel: {fileID: 1602836608}
   _defeatPanel: {fileID: 127684519}
   _fpsController: {fileID: 1091807023}
-  _playerDatas: {fileID: 0}
+  _playerDatas: {fileID: 11400000, guid: 6d4e085bb9efe64498916970da880e60, type: 2}
   _fearBonus: 20
   _fearPenalty: 20
 --- !u!4 &949794799
@@ -2343,9 +2343,6 @@ PrefabInstance:
       addedObject: {fileID: 2040130214}
     - targetCorrespondingSourceObject: {fileID: -5954076081248283070, guid: 9bf78ab14d1868f429654d19307d50de, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2040130216}
-    - targetCorrespondingSourceObject: {fileID: -5954076081248283070, guid: 9bf78ab14d1868f429654d19307d50de, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2040130215}
     - targetCorrespondingSourceObject: {fileID: 7684257318669449461, guid: 9bf78ab14d1868f429654d19307d50de, type: 3}
       insertIndex: -1
@@ -2885,27 +2882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2135b2e05c43248822e400ef4597e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &2040130216
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040130210}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 6, y: 3, z: 6}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2081928050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1250141025732126548, guid: 9bf78ab14d1868f429654d19307d50de, type: 3}

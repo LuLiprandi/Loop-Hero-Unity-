@@ -1481,6 +1481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CellMiniGame (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8413685683143049700, guid: 4776c0f2aefa7ab448d05f026c20323b, type: 3}
+      propertyPath: _miniGameSceneName
+      value: MiniGame2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

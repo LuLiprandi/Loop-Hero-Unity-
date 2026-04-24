@@ -58,7 +58,7 @@ public class AvaController : MonoBehaviour
         _characterController.Move(motion);
     }
 
-    /// <summary>Tourne le mesh selon si Ava va vers ou loin de la caméra.</summary>
+    
     private void UpdateMeshRotation(float vertical)
     {
         if (_meshRoot == null) return;
@@ -69,7 +69,7 @@ public class AvaController : MonoBehaviour
             _meshRoot.localRotation = Quaternion.Euler(0f, FaceAway, 0f);
     }
 
-    /// <summary>Bloque ou débloque le déplacement du joueur.</summary>
+
     public void SetMovement(bool enabled)
     {
         _canMove       = enabled;
