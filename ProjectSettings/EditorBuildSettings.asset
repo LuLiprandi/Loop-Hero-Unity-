@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cache-Cache mini game.unity
     guid: c76458a7a9bc1be4dafaae1058c332d0
+  - enabled: 1
+    path: Assets/Scenes/MiniGame2.unity
+    guid: 6d6621b8418b86546ac75b8c345bc7b2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
