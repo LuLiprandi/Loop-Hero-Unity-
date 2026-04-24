@@ -18,7 +18,7 @@ public class DialogueComponent : MonoBehaviour, IActionnable
     private int _currentRowIndex;
     private DialogueRow _currentRow;
 
-    // --- Setters used by DialogueSwitcher ---
+    
     public void SetDatas(DialogueDatas datas)
     {
         _dialogueDatas = datas;
@@ -36,7 +36,8 @@ public class DialogueComponent : MonoBehaviour, IActionnable
         _panicStartRowIndex = panicStartRowIndex;
     }
 
-    // --- IActionnable ---
+    
+   
     public void Action(Pawn currentPawn)
     {
         _currentPawn = currentPawn;
@@ -102,7 +103,7 @@ public class DialogueComponent : MonoBehaviour, IActionnable
 
         if (_currentRow.nextRowNumber == -1)
         {
-            // reset for next time
+            
             _currentRowIndex = 0;
             _currentRow = GetRow(_currentRowIndex);
 
